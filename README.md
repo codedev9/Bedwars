@@ -1,4 +1,4 @@
-# Bedwars
-vape v4 but it skidded to max
+# BedwarsLibrary
+A Library to create Gui's, currently in beta
 # Updates
--- Making the Gui
+Updates will be when i can code it, prob everyday
