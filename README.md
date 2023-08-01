@@ -1,5 +1,2 @@
-# BedwarsLibrary
-A Library to create Gui's, currently in beta
-# Updates
-Update 1.3
-- BedwarsHub in making
+# BedwarsCreative
+This is a documention for the roblox bedwars creative.
