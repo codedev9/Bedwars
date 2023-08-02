@@ -1,5 +1,6 @@
 --[[
-    SuitWare
+    SUITWARE
+    Made By suitxyz
 ]]
 shared.VapeIndependent = true
 shared.CustomSaveVape = "vape"
@@ -19,115 +20,66 @@ local function notify(title, text, delay)
 	end)
 	return (suc and res)
 end
-
+local function notifyv2(text, delay)
+	notify("SuitWare", text, delay)
+end
 --//
-notify("SuitWare", "someone is using suitware", 2)
-print(game.Players.LocalPlayer.Name.. " is using suitware | userID: " ..game.Players.LocalPlayer.UserId)
 local Heatseeker = Utility.CreateOptionsButton({
-    Name = "FlyLagbackRemover", -- name of object
+    Name = "AntiCheatDisabler", -- name of object
     Function = function(callback) -- function that is called when toggled
         if callback then
-            notify("FlyLagbackRemover", "You can infinite fly", 2)
+            notifyv2("Disabled AntiCheat", 2)
+            notifyv2("40 fly speed and speed 30 max", 2)
             return
+            game:GetService('RunService').RenderStepped:Connect(function()
 
-        else
-            print("disabled")
+                local args = {
+                    [1] = {
+                        ["direction"] = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.LookVector
+                    }
+                }
+              
+                       game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.ScytheDash:FireServer(unpack(args))
+              end)
         end
     end,
     HoverText = "allows Infnite fly", -- text that will show up after hovering over the button (optional)
     Default = true, -- enabled on startup (optional)
     ExtraText = function() return " nolagback" end -- text that goes next to the button in Text GUI (optional)
 })
-wait(0.5)
-notify("SuitWare", "HeatSeeker Loaded", 2)
-local Dupe = {["Enabled"] = false}
-Dupe = Utility.CreateOptionsButton({
-    Name = "ChestDupe", -- name of object
+local RiseWaterMark = Utility.CreateOptionsButton({
+    Name = "RiseWatermark", -- name of object
     Function = function(callback) -- function that is called when toggled
         if callback then
-            notify("ChestDupe", "Duping..", 2)
-            local Repo = game.ReplicatedStorage
-            local Inventories = Repo.Inventories
-                  local v1 = Inventories:WaitForChild(game.Players.LocalPlayer.Name)
-                  if v1.Name == game.Players.LocalPlayer then
-                    notify("ChestDupe", v1.Name, 2)
-                  end
-                  if v1:FindFirstChild("stone_sword") then
-                    local suc, fail = pcall(function()
-                        v1:Clone().Parent = v1
-                    end)
-                    if suc then
-                        notify("ChestDupe", "Duped!", 2)
-                    else
-                        notify("ChestDupe", fail, 2)
-                    end
-                else
-                    notify("ChestDupe", "missing stone sword", 2)
-                  end
-                else
+            notify("Rise", "Enjoy", 2)
+            --// rise logo leaked
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local ImageLabel = Instance.new("ImageLabel")
+local UIGradient = Instance.new("UIGradient")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+ImageLabel.Parent = ScreenGui
+ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageLabel.BackgroundTransparency = 5435.000
+ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Size = UDim2.new(0, 185, 0, 106)
+ImageLabel.Image = "rbxassetid://14155008442"
+ImageLabel.ScaleType = Enum.ScaleType.Fit
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(14, 255, 227)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(1, 255, 81))}
+UIGradient.Parent = ImageLabel
         end
     end,
-    HoverText = "Not Tested", -- text that will show up after hovering over the button (optional)
+    HoverText = "allows Infnite fly", -- text that will show up after hovering over the button (optional)
     Default = true, -- enabled on startup (optional)
-    ExtraText = function() return " iron" end -- text that goes next to the button in Text GUI (optional)
-})
-wait(0.5)
-notify("SuitWare", "ChestDupe Loaded", 2)
-wait(1)
-notify("SuitWare", "Loading Combat", 2)
-local SuitAura = {["Enabled"] = false}
-SuitAura = Combat.CreateOptionsButton({
-    Name = "SuitAura", -- name of object
-    Function = function(callback) -- function that is called when toggled
-        if callback then
-            
-        end
-    end,
-    HoverText = "yes its real", -- text that will show up after hovering over the button (optional)
-    Default = true, -- enabled on startup (optional)
-    ExtraText = function() return " iron" end -- text that goes next to the button in Text GUI (optional)
-})
-SuitAura = Combat.CreateOptionsButton({
-    Name = "AutoClicker", -- name of object
-    Function = function(callback) -- function that is called when toggled
-        if callback then
-            
-        end
-    end,
-    HoverText = nil, -- text that will show up after hovering over the button (optional)
-    Default = true, -- enabled on startup (optional)
-    ExtraText = nil -- text that goes next to the button in Text GUI (optional)
-})
-SuitAura = Combat.CreateOptionsButton({
-    Name = "StoneExploit", -- name of object
-    Function = function(callback) -- function that is called when toggled
-        if callback then
-            
-        end
-    end,
-    HoverText = "dupes i think", -- text that will show up after hovering over the button (optional)
-    Default = true, -- enabled on startup (optional)
-    ExtraText = function() return " stone_sword" end -- text that goes next to the button in Text GUI (optional)
-})
-SuitAura = Blatant.CreateOptionsButton({
-    Name = "AntiStaff", -- name of object
-    Function = function(callback) -- function that is called when toggled
-        if callback then
-            
-        end
-    end,
-    HoverText = "leaves when staff is detected", -- text that will show up after hovering over the button (optional)
-    Default = true, -- enabled on startup (optional)
-    ExtraText = function() return " easy.gg" end -- text that goes next to the button in Text GUI (optional)
-})
-SuitAura = .CreateOptionsButton({
-    Name = "SuitA", -- name of object
-    Function = function(callback) -- function that is called when toggled
-        if callback then
-            
-        end
-    end,
-    HoverText = "yes its real", -- text that will show up after hovering over the button (optional)
-    Default = true, -- enabled on startup (optional)
-    ExtraText = function() return " iron" end -- text that goes next to the button in Text GUI (optional)
+    ExtraText = function() return " nolagback" end -- text that goes next to the button in Text GUI (optional)
 })
