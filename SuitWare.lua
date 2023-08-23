@@ -31,8 +31,6 @@ local hasTeleported = false
             tween:Play()
         end
     end
-shared.VapeIndependent = true
-shared.CustomSaveVape = "vape"
 local GuiLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
 --//
 local Combat = GuiLibrary.ObjectsThatCanBeSaved.CombatWindow.Api
@@ -126,7 +124,7 @@ local AutoWin2V2 = Utility.CreateOptionsButton({
     Function = function(callback) -- function that is called when toggled
         if callback then
             wait(0.05)
-            notify("AutoWin", "Teleporting To bed"), 8
+            notify("AutoWin", "Teleporting To bed", 2)
             wait(0.03)
             lplr.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
             lplr.CharacterAdded:Connect(function()
@@ -134,6 +132,11 @@ local AutoWin2V2 = Utility.CreateOptionsButton({
                 tweenToNearestBed()
                 wait(4)
                 notify("AutoWin", "Killing Players", 2)
+                lplr.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Dead)
+                for _, plrs in pairs(game.Players:GetChildren()) do 
+                    if plrs.Character.Humanoid.Health == 0 
+                end
+                telToPlr()
             end)
         end
     end,
@@ -142,14 +145,12 @@ local AutoWin2V2 = Utility.CreateOptionsButton({
 })
 end
 local HostExploit = Blatant.CreateOptionsButton({
-    Name = "HostExploit", -- name of object
+    Name = "Dupe", -- name of object
     Function = function(callback) -- function that is called when toggled
         if callback then
-            notify("HostExploit", "Giving Host", 1)
-            game.Players.LocalPlayer:SetAttribute("Cohost", true)
-            notify("HostExploit", "Client-Sided btw", 2)
+            notify("Dupe", "Duping", 1)
         end
     end,
-    HoverText = "only works with 2v2 (scythe must be used)", -- text that will show up after hovering over the button (optional)
+    HoverText = "showcase only", -- text that will show up after hovering over the button (optional)
     Default = false, -- enabled on startup (optional)
 })
